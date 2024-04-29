@@ -1,2 +1,11 @@
-# ecg-autoencoder
-Unsupervised anomaly detection on ECG data using autoencoders
+# Unsupervised Anomaly Detection on ECG Data
+
+Our project is focused on building an autoencoder neural network to detect anomalies from electrocardiography (ECG) readings. ECG readings are com- monly used to see if there is any abnormal heart activity, which aids medical professionals in identifying any issues with a patient’s health. Our aim is to construct a model that will precisely indicate which parts of an ECG reading have a high chance to be considered an anomaly, with the hope of helping doctors diagnose different heart diseases more effectively.
+
+For our dataset, we used the PTB-XL dataset. The PTB-XL dataset contains ECG waveform data from more than 18,000 patients and various metadata such as patient demographics. We removed the labels column from this dataset to make it unsupervised as this would be more reflective of the unknowns and uncertainties of the real world.
+
+Our first computational experiment involves transfer learning our model to a supervised classification problem. The purpose of this experiment is to assess how effective a model trained to detect anomalies from unsupervised data perform on a classification problem that classifies normal/abnormal ECG readings. The high level overview is adding a classification head to the autoencoder and testing it on labeled data. If the supervised classifier performs well on the test set, the unsupervised model’s learning could be useful in specifically identifying whether or not ECG readings indicate an abnormal heart condition.
+
+The second experiment is feature learning with autoencoders. This experiment involves reconstructing a normal ECG reading and comparing it with a new reading. We plan on doing this by removing from each entry the data points that are considered anomalies using our unsupervised model in the dataset, and then train a new model that reconstructs a “normal” ECG reading using this “cleaned” data. The purpose of this experiment is to explore different ways our autoencoder can be used to detect future anomalies as well as analyze which features our model finds significant in a “normal” ECG reading.
+
+This project was our final project for our CS342 Nerual Networks class at UT Austin. Included in the repository is a PDF of the writeup we submitted alongside the code.
